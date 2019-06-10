@@ -1,0 +1,18 @@
+TODO
+* API from docker image to server
+* frontend
+
+new text page
+* text input
+* length to generate
+* highlight tokens + tweet
+
+history page
+* list of generated snippets
+* ability to remove
+
+chat mode
+* create thread
+* delete thread
+
+gpt-2 container <-> GQL server <-> client

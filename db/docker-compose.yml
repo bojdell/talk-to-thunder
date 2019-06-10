@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  mysql:
+    container_name: "db_talktothunder_1"
+    image: mysql:5.6
+    volumes:
+      - ./binlog:/etc/mysql/conf.d/
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: "talktothunder"
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
