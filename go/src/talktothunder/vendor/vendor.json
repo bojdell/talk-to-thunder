@@ -1,12 +1,6 @@
 {
 	"comment": "",
 	"ignore": "test",
-	"package": [
-		{
-			"path": "go/src/github.com/samsarahq/thunder",
-			"revision": "65cab42b97a1d78bf25cf4cb9d95b61722c1b683",
-			"version": "65cab42b97a1d78bf25cf4cb9d95b61722c1b683"
-		}
-	],
-	"rootPath": "talktothunder"
+	"package": [],
+	"rootPath": "gqlserver"
 }

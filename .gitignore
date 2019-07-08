@@ -23,4 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 /opt
-# /go
+/go/bin
+/go/pkg
+/go/src/*
+!/go/src/talktothunder

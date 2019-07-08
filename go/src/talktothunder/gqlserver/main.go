@@ -8,10 +8,8 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strconv"
 	"time"
 
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/samsarahq/go/oops"
 	"github.com/samsarahq/thunder/graphql"
 	"github.com/samsarahq/thunder/graphql/graphiql"
@@ -40,7 +38,7 @@ type Server struct {
 type Snippet struct {
 	Id            int64 `sql:",primary" graphql:",key"`
 	CreatedAt     time.Time
-	State2        SnippetState
+	State         SnippetState
 	SeedText      string
 	GeneratedText string
 }
@@ -55,23 +53,37 @@ func (s *Server) registerQueryRoot(schema *schemabuilder.Schema) {
 
 	object.FieldFunc("allSnippets", func(ctx context.Context) ([]*Snippet, error) {
 		var rows []*Snippet
-		return rows, s.db.Query(ctx, &rows, sqlgen.Filter{}, nil)
+		err := s.db.Query(ctx, &rows, sqlgen.Filter{}, &sqlgen.SelectOptions{OrderBy: "id DESC"})
+		return rows, err
 	})
 
 	object.FieldFunc("snippet", func(ctx context.Context, args struct{ Id int64 }) (*Snippet, error) {
 		var snippet *Snippet
-		if err := s.db.QueryRow(ctx, &snippet, sqlgen.Filter{"id": args.Id}, nil); err != nil && err != sql.ErrNoRows {
-			return nil, oops.Wrapf(err, "")
+		if err := s.db.QueryRow(ctx, &snippet, sqlgen.Filter{"id": args.Id}, nil); err != nil {
+			if err != sql.ErrNoRows {
+				return nil, oops.Wrapf(err, "")
+			}
+			return nil, nil
 		}
 
 		return snippet, nil
 	})
 }
 
+func int64OrElse(a *int64, b int64) int64 {
+	if a == nil {
+		return b
+	}
+	return *a
+}
+
 func (s *Server) registerMutationRoot(schema *schemabuilder.Schema) {
 	object := schema.Mutation()
-	object.FieldFunc("createSnippet", func(ctx context.Context, args struct{ Text string }) (int64, error) {
-		return s.createSnippet(ctx, args.Text, DefaultNumTokensToGenerate)
+	object.FieldFunc("createSnippet", func(ctx context.Context, args struct {
+		Text             string
+		FinalTokenLength *int64
+	}) (int64, error) {
+		return s.createSnippet(ctx, args.Text, int64OrElse(args.FinalTokenLength, DefaultNumTokensToGenerate))
 	})
 }
 
@@ -88,19 +100,6 @@ func (s *Server) Schema() *graphql.Schema {
 	return s.SchemaBuilderSchema().MustBuild()
 }
 
-type executionLogger struct{}
-
-func (e *executionLogger) StartExecution(ctx context.Context, tags map[string]string, initial bool) {}
-func (e *executionLogger) FinishExecution(ctx context.Context, tags map[string]string, delay time.Duration) {
-}
-func (e *executionLogger) Error(ctx context.Context, err error, tags map[string]string) {
-	log.Printf("error:%v\n%s", tags, err)
-}
-
-type subscriptionLogger struct {
-	server *Server
-}
-
 func panicIfErr(err error) {
 	if err == nil {
 		return
@@ -108,24 +107,9 @@ func panicIfErr(err error) {
 	panic(err.Error())
 }
 
-func (l *subscriptionLogger) Subscribe(ctx context.Context, id string, tags map[string]string) {
-	intId, err := strconv.ParseInt(id, 10, 64)
-	panicIfErr(err)
-
-	log.Println("~~ Subscribe", intId)
-}
-
-func (l *subscriptionLogger) Unsubscribe(ctx context.Context, id string) {
-	intId, err := strconv.ParseInt(id, 10, 64)
-	if err != nil {
-		panic("error parsing subscription id")
-	}
-	log.Println("~~ Unsubscribe", intId)
-}
-
 func (s *Server) getCurrentSnippet(ctx context.Context) (*Snippet, error) {
 	var snippet *Snippet
-	if err := s.db.QueryRow(ctx, &snippet, sqlgen.Filter{"state2": int64(SnippetStateInProgress)}, nil); err != nil {
+	if err := s.db.QueryRow(ctx, &snippet, sqlgen.Filter{"state": SnippetStateInProgress}, nil); err != nil {
 		if err != sql.ErrNoRows {
 			return nil, oops.Wrapf(err, "")
 		}
@@ -135,9 +119,9 @@ func (s *Server) getCurrentSnippet(ctx context.Context) (*Snippet, error) {
 	return snippet, nil
 }
 
-func (s *Server) createSnippet(ctx context.Context, seedText string, numTokensToGenerate int) (int64, error) {
+func (s *Server) createSnippet(ctx context.Context, seedText string, numTokensToGenerate int64) (int64, error) {
 	row := &Snippet{
-		State2:   SnippetStateInProgress,
+		State:    SnippetStateInProgress,
 		SeedText: seedText,
 	}
 
@@ -179,7 +163,7 @@ func (s *Server) updateCurrentSnippet(ctx context.Context, currentSnippet *Snipp
 	_, err := os.Stat(InputFileName)
 	if err != nil && os.IsNotExist(err) {
 		if currentSnippet != nil {
-			currentSnippet.State2 = SnippetStateCompleted
+			currentSnippet.State = SnippetStateCompleted
 			if err := s.db.UpdateRow(ctx, currentSnippet); err != nil {
 				return nil, oops.Wrapf(err, "")
 			}
