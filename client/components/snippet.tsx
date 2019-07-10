@@ -61,7 +61,7 @@ class Snippet extends React.Component<Props, State> {
   handleUndeleteClick = () => {
     mutate({
       // Challenge 2: Implement the mutation to restore a deleted snippet.
-      query: "",
+      query: ``,
       variables: {
         id: this.props.id
       }
