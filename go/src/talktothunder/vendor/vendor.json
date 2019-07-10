@@ -1,0 +1,394 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "BxH9xJUqczhpL57gfKZe2/VlBHY=",
+			"path": "github.com/fatih/color",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "i3UtE7/Cn57eX1hO5Z0CqY/Eeb4=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/go-sql-driver/mysql",
+			"path": "github.com/go-sql-driver/mysql",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "FhEC1RwKSm/8jvTI2MKlzDVz+Vs=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/gogo/protobuf/gogoproto",
+			"path": "github.com/gogo/protobuf/gogoproto",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "47nJ3iu1bVvK9jPXwAinFYr4mBU=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/gogo/protobuf/proto",
+			"path": "github.com/gogo/protobuf/proto",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "4R7X2wRYYOxdXsoXOEcyBoCakb8=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/gogo/protobuf/protoc-gen-gogo/descriptor",
+			"path": "github.com/gogo/protobuf/protoc-gen-gogo/descriptor",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "HPVQZu059/Rfw2bAWM538bVTcUc=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/gogo/protobuf/sortkeys",
+			"path": "github.com/gogo/protobuf/sortkeys",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "yK31P3hm7p5eA5PczMByhK0Tj2U=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/gogo/protobuf/types",
+			"path": "github.com/gogo/protobuf/types",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "1DnYZKxFcCPweeKsIPjIiF2p28Q=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/gorilla/websocket",
+			"path": "github.com/gorilla/websocket",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "EYsvdu2FEkUZcai8y+nRsj3B5zA=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/graphql-go/graphql/gqlerrors",
+			"path": "github.com/graphql-go/graphql/gqlerrors",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "F6DqOJeICQY0ZyW5XdP2bIhQjyE=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/graphql-go/graphql/language/ast",
+			"path": "github.com/graphql-go/graphql/language/ast",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "FNFpZJ07U5Ud3MCc25ast14qVbo=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/graphql-go/graphql/language/kinds",
+			"path": "github.com/graphql-go/graphql/language/kinds",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "8prb7ZKM8a07/nduiBn9bjby6GI=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/graphql-go/graphql/language/lexer",
+			"path": "github.com/graphql-go/graphql/language/lexer",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "yskrC6tG5BTJdIk4GKHzGTenQOc=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/graphql-go/graphql/language/location",
+			"path": "github.com/graphql-go/graphql/language/location",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "6SH6pyHhLV2RR2rb0h9fNc3SB/U=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/graphql-go/graphql/language/parser",
+			"path": "github.com/graphql-go/graphql/language/parser",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "dRrl/Ky/0NTYA3bZznpxp4tG5Jc=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/graphql-go/graphql/language/source",
+			"path": "github.com/graphql-go/graphql/language/source",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "KIX/3RadQkfl4ZxCmOQ01vAGLEI=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/juju/errors",
+			"path": "github.com/juju/errors",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "UrTCxNP1ZX7gsIeazQCManWjoP8=",
+			"path": "github.com/mattn/go-colorable",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "AZO2VGorXTMDiSVUih3k73vORHY=",
+			"path": "github.com/mattn/go-isatty",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "Tu0hTSicSOL7cd5xSoGH584zhY8=",
+			"path": "github.com/mattn/go-zglob",
+			"revision": "2ea3427bfa539cca900ca2768d8663ecc8a708c1",
+			"revisionTime": "2018-08-03T00:18:19Z"
+		},
+		{
+			"checksumSHA1": "kyFhN/pm/n1VV6NBHcKP5b+tEhw=",
+			"path": "github.com/mattn/go-zglob/fastwalk",
+			"revision": "2ea3427bfa539cca900ca2768d8663ecc8a708c1",
+			"revisionTime": "2018-08-03T00:18:19Z"
+		},
+		{
+			"checksumSHA1": "tWNGH8azWW7HgGgly/osBga6a74=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/ngaut/log",
+			"path": "github.com/ngaut/log",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "Pps01vZwszFzmTQixlqFizN/w14=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/rakyll/statik/fs",
+			"path": "github.com/rakyll/statik/fs",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "u4PrxGwdDzBswxmz7Rnu50esTpc=",
+			"path": "github.com/samsarahq/go/oops",
+			"revision": "fbd7434ad75efcc6c5ab375936358b30bc454520",
+			"revisionTime": "2019-05-15T23:57:15Z"
+		},
+		{
+			"checksumSHA1": "lrjZFKM64BOf1Ev19Q5nDv4+SVA=",
+			"path": "github.com/samsarahq/taskrunner",
+			"revision": "1fdb01517eac5eb1c04651265ccd65691b4ac4c6",
+			"revisionTime": "2019-06-04T23:28:49Z"
+		},
+		{
+			"checksumSHA1": "foDJiMitJ3IXoysgEj57Saev9LU=",
+			"path": "github.com/samsarahq/taskrunner/cache",
+			"revision": "1fdb01517eac5eb1c04651265ccd65691b4ac4c6",
+			"revisionTime": "2019-06-04T23:28:49Z"
+		},
+		{
+			"checksumSHA1": "w/tlPiP9a8XdxUWSFkM755nrKKU=",
+			"path": "github.com/samsarahq/taskrunner/clireporter",
+			"revision": "1fdb01517eac5eb1c04651265ccd65691b4ac4c6",
+			"revisionTime": "2019-06-04T23:28:49Z"
+		},
+		{
+			"checksumSHA1": "b3R5NJh1evGGOJeH3RQAORzwt2s=",
+			"path": "github.com/samsarahq/taskrunner/goextensions",
+			"revision": "1fdb01517eac5eb1c04651265ccd65691b4ac4c6",
+			"revisionTime": "2019-06-04T23:28:49Z"
+		},
+		{
+			"checksumSHA1": "1W8GXvyhMuL0bUoDgfkQyKKvbxE=",
+			"path": "github.com/samsarahq/taskrunner/shell",
+			"revision": "1fdb01517eac5eb1c04651265ccd65691b4ac4c6",
+			"revisionTime": "2019-06-04T23:28:49Z"
+		},
+		{
+			"checksumSHA1": "SLkiHHvIZ4wN8JAiWY+3NGaoz+E=",
+			"path": "github.com/samsarahq/taskrunner/watcher",
+			"revision": "1fdb01517eac5eb1c04651265ccd65691b4ac4c6",
+			"revisionTime": "2019-06-04T23:28:49Z"
+		},
+		{
+			"checksumSHA1": "BcpJ1cUA+nWTGBR6IBE89LeBJAs=",
+			"path": "github.com/samsarahq/thunder/batch",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "mTc+aW35Qi+8J9gtbKCuhQrPoP4=",
+			"path": "github.com/samsarahq/thunder/concurrencylimiter",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "Zk+sayo6Hchp8+UinFSdYR71aS4=",
+			"path": "github.com/samsarahq/thunder/diff",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "BAmm11g6DVFlSpYQ6cNw4gHyhds=",
+			"path": "github.com/samsarahq/thunder/graphql",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "RxKwrIVJnhRGMc/kQJ1kn55B6V4=",
+			"path": "github.com/samsarahq/thunder/graphql/graphiql",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "C0VkjHlLHfOdcv8uffTe5Vx9OFY=",
+			"path": "github.com/samsarahq/thunder/graphql/graphiql/statik",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "CbX/LykY6RFMYv5XKHWZnztEd4I=",
+			"path": "github.com/samsarahq/thunder/graphql/introspection",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "7Yh+dsEo6pXWG53+CJcZneGeni0=",
+			"path": "github.com/samsarahq/thunder/graphql/schemabuilder",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "PHIE7oz6uPMEN4GxVkLOHfEI6z4=",
+			"path": "github.com/samsarahq/thunder/internal",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "sM9sGWb2IdlfjQ7Aq02o3E5uh/g=",
+			"path": "github.com/samsarahq/thunder/internal/fields",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "uljOYwrVaeMq66S94zcNXRNOVVg=",
+			"path": "github.com/samsarahq/thunder/internal/filter",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "Z/59rXCv9/O4m/+8urms+170FLg=",
+			"path": "github.com/samsarahq/thunder/livesql",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "LHzDTJ/iTXsrzStzpQbIHrepvY8=",
+			"path": "github.com/samsarahq/thunder/logger",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "xVQCIw9XCJ7XsyWSK+C5Yh93yc8=",
+			"path": "github.com/samsarahq/thunder/reactive",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "PmPQv11T+JpRQvOmrhIUQOf5QFg=",
+			"path": "github.com/samsarahq/thunder/sqlgen",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "CIkHImqJGGd4FwqMqYNqdZ6LDAU=",
+			"path": "github.com/samsarahq/thunder/thunderpb",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "7Ck3I7G0hgz+1WD5ohzUMFJsvGg=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/satori/go.uuid",
+			"path": "github.com/satori/go.uuid",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "k7K1XgcDxQczOrIhHJAhDW4LkwI=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/siddontang/go-mysql/client",
+			"path": "github.com/siddontang/go-mysql/client",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "7SWfaLfEGm6yV536uN705VMqsBI=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/siddontang/go-mysql/mysql",
+			"path": "github.com/siddontang/go-mysql/mysql",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "n/oG8QPPwsvSAimc/gCSuh5GaOQ=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/siddontang/go-mysql/packet",
+			"path": "github.com/siddontang/go-mysql/packet",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "0v/k1pPZtUicl2oYEm8Gjx6SPk8=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/siddontang/go-mysql/replication",
+			"path": "github.com/siddontang/go-mysql/replication",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "hou29E6PZ7dEDFgXgM9P15cgHr4=",
+			"origin": "github.com/samsarahq/thunder/vendor/github.com/siddontang/go/hack",
+			"path": "github.com/siddontang/go/hack",
+			"revision": "2069ec332be3dcebe71704d9b8fcf621d5ebb542",
+			"revisionTime": "2019-06-20T22:53:00Z"
+		},
+		{
+			"checksumSHA1": "byl77NJm2QiR5tfeBzAf2QpeQUc=",
+			"origin": "github.com/samsarahq/taskrunner/vendor/go.uber.org/atomic",
+			"path": "go.uber.org/atomic",
+			"revision": "1fdb01517eac5eb1c04651265ccd65691b4ac4c6",
+			"revisionTime": "2019-06-04T23:28:49Z"
+		},
+		{
+			"checksumSHA1": "HephvKOmm5xmOrCzhKEtcw7lqE8=",
+			"origin": "github.com/samsarahq/taskrunner/vendor/go.uber.org/multierr",
+			"path": "go.uber.org/multierr",
+			"revision": "1fdb01517eac5eb1c04651265ccd65691b4ac4c6",
+			"revisionTime": "2019-06-04T23:28:49Z"
+		},
+		{
+			"checksumSHA1": "ErvBN7+3uM2RSyqdB1jL23kuq4M=",
+			"path": "golang.org/x/crypto/ssh/terminal",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "GtamqiJoL7PGHsN454AoffBFMa8=",
+			"origin": "github.com/samsarahq/taskrunner/vendor/golang.org/x/net/context",
+			"path": "golang.org/x/net/context",
+			"revision": "1fdb01517eac5eb1c04651265ccd65691b4ac4c6",
+			"revisionTime": "2019-06-04T23:28:49Z"
+		},
+		{
+			"checksumSHA1": "iEK5hCRfrkdc1JOJsaiWuymHmeQ=",
+			"path": "golang.org/x/sync/errgroup",
+			"revision": "112230192c580c3556b8cee6403af37a4fc5f28c",
+			"revisionTime": "2019-04-22T22:11:18Z"
+		},
+		{
+			"checksumSHA1": "qCuKXLGOd2PedjXMLl7sSuxbZiI=",
+			"path": "golang.org/x/sys/unix",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "m5QCvoZ2KaoLTG9VWjYNonM08b8=",
+			"origin": "github.com/samsarahq/taskrunner/vendor/golang.org/x/sys/windows",
+			"path": "golang.org/x/sys/windows",
+			"revision": "1fdb01517eac5eb1c04651265ccd65691b4ac4c6",
+			"revisionTime": "2019-06-04T23:28:49Z"
+		},
+		{
+			"checksumSHA1": "B2mQa+cT1QZlVw/PPH0g/OED4Dc=",
+			"origin": "github.com/samsarahq/taskrunner/vendor/mvdan.cc/sh/expand",
+			"path": "mvdan.cc/sh/expand",
+			"revision": "1fdb01517eac5eb1c04651265ccd65691b4ac4c6",
+			"revisionTime": "2019-06-04T23:28:49Z"
+		},
+		{
+			"checksumSHA1": "b2ntSUUB+e62ilftWPn/yOGl2IE=",
+			"path": "mvdan.cc/sh/interp",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "7M+k9nHJyGDyxIRNz/wcFZA5MxI=",
+			"path": "mvdan.cc/sh/syntax",
+			"revision": ""
+		}
+	],
+	"rootPath": "talktothunder"
+}
