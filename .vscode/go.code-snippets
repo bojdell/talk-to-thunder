@@ -1,0 +1,8 @@
+{
+  "oops!": {
+    "prefix": "if err",
+    "scope": "go",
+    "body": ["if err != nil {", "  return oops.Wrapf(err, \"$1\")", "}"],
+    "description": "wrap your err in oops.Wrapf"
+  }
+}

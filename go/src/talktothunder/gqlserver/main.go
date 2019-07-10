@@ -38,6 +38,7 @@ type Server struct {
 type Snippet struct {
 	Id            int64 `sql:",primary" graphql:",key"`
 	CreatedAt     time.Time
+	DeletedAt     *time.Time
 	State         SnippetState
 	SeedText      string
 	GeneratedText string
@@ -53,7 +54,19 @@ func (s *Server) registerQueryRoot(schema *schemabuilder.Schema) {
 
 	object.FieldFunc("allSnippets", func(ctx context.Context) ([]*Snippet, error) {
 		var rows []*Snippet
-		err := s.db.Query(ctx, &rows, sqlgen.Filter{}, &sqlgen.SelectOptions{OrderBy: "id DESC"})
+		err := s.db.Query(ctx, &rows, sqlgen.Filter{}, &sqlgen.SelectOptions{
+			Where:   "deleted_at IS NULL",
+			OrderBy: "id DESC",
+		})
+		return rows, err
+	})
+
+	object.FieldFunc("deletedSnippets", func(ctx context.Context) ([]*Snippet, error) {
+		var rows []*Snippet
+		err := s.db.Query(ctx, &rows, sqlgen.Filter{}, &sqlgen.SelectOptions{
+			Where:   "deleted_at IS NOT NULL",
+			OrderBy: "deleted_at DESC",
+		})
 		return rows, err
 	})
 
@@ -84,6 +97,77 @@ func (s *Server) registerMutationRoot(schema *schemabuilder.Schema) {
 		FinalTokenLength *int64
 	}) (int64, error) {
 		return s.createSnippet(ctx, args.Text, int64OrElse(args.FinalTokenLength, DefaultNumTokensToGenerate))
+	})
+	object.FieldFunc("deleteSnippet", func(ctx context.Context, args struct {
+		Id int64
+	}) error {
+		ctx, tx, err := s.db.WithTx(ctx)
+		if err != nil {
+			return oops.Wrapf(err, "")
+		}
+		defer tx.Rollback()
+
+		var row *Snippet
+		if err := s.db.QueryRow(ctx, &row, sqlgen.Filter{"id": args.Id}, &sqlgen.SelectOptions{
+			Where: "deleted_at IS NULL",
+		}); err != nil {
+			if err != sql.ErrNoRows {
+				return oops.Wrapf(err, "")
+			}
+			return nil
+		}
+
+		timeNow := time.Now()
+		row.DeletedAt = &timeNow
+
+		if err := s.db.UpdateRow(ctx, row); err != nil {
+			return oops.Wrapf(err, "")
+		}
+
+		if err := tx.Commit(); err != nil {
+			return oops.Wrapf(err, "")
+		}
+
+		return nil
+	})
+
+	object.FieldFunc("undeleteSnippet", func(ctx context.Context, args struct {
+		Id int64
+	}) error {
+		ctx, tx, err := s.db.WithTx(ctx)
+		if err != nil {
+			return oops.Wrapf(err, "")
+		}
+		defer tx.Rollback()
+
+		var row *Snippet
+		if err := s.db.QueryRow(ctx, &row, sqlgen.Filter{"id": args.Id}, &sqlgen.SelectOptions{
+			Where: "deleted_at IS NOT NULL",
+		}); err != nil {
+			if err != sql.ErrNoRows {
+				return oops.Wrapf(err, "")
+			}
+			return nil
+		}
+
+		row.DeletedAt = nil
+
+		if err := s.db.UpdateRow(ctx, row); err != nil {
+			return oops.Wrapf(err, "")
+		}
+
+		if err := tx.Commit(); err != nil {
+			return oops.Wrapf(err, "")
+		}
+
+		return nil
+	})
+
+	object.FieldFunc("emptyTrash", func(ctx context.Context) error {
+		if _, err := s.db.QueryExecer(ctx).ExecContext(ctx, "DELETE FROM snippets WHERE deleted_at IS NOT NULL"); err != nil && err != sql.ErrNoRows {
+			return oops.Wrapf(err, "")
+		}
+		return nil
 	})
 }
 

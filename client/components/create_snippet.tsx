@@ -59,7 +59,7 @@ class CreateSnippet extends React.Component<Props, State> {
           className="CreateSnippet-textInput"
           maxLength={850}
           autoFocus={true}
-          placeholder="Type something and a neural network will guess what comes next."
+          placeholder="Type something and a neural network will guess what comes next.&#10;Press Cmd+Enter or Ctrl+Enter to submit."
           rows={4}
           onChange={this.handleTextChange}
           onKeyDown={this.handleKeyDown}

@@ -12,6 +12,6 @@
   outline: none;
   padding: 15px;
   border-radius: 12px;
-  font-size: 18pt;
-  /* font-family: helvetica;  TODO */
+  font-size: 14pt;
+  line-height: 20pt;
 }

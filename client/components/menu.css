@@ -1,0 +1,28 @@
+.Menu {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  background-color: #353535;
+  height: 60px;
+  width: 100%;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.Menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.Menu-item,
+.Menu-item:hover {
+  height: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.Menu-item:hover {
+  background-color: #646464;
+}

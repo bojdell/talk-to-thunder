@@ -1,7 +1,40 @@
+/* TODO: use CSS vars */
+/* TODO: use em units */
+
 .u-textAlignCenter {
   text-align: center;
 }
 
 .u-textBold {
   font-weight: 700;
+}
+
+.u-flex {
+  display: flex;
+}
+
+.u-flex1 {
+  flex: 1;
+}
+
+.u-flexAlignItemsCenter {
+  display: flex;
+  align-items: center;
+}
+
+.u-flexJustifyContentCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.u-marginMd {
+  margin: 10px;
+}
+
+.u-marginLeftMd {
+  margin-left: 10px;
+}
+
+.u-marginTopLg {
+  margin-top: 40px;
 }

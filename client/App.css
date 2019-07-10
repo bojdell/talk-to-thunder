@@ -1,7 +1,14 @@
 .App {
-  margin: 20px;
-  max-width: 750px;
+  color: #353535;
   display: flex;
   align-items: center;
   flex-flow: column;
+  height: 100%;
+}
+
+.App-body {
+  margin: 0 40px 40px 40px;
+  max-width: 1000px;
+  height: 100%;
+  width: 100%;
 }

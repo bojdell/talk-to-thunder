@@ -11,10 +11,12 @@ class AllSnippets extends React.Component<Props, {}> {
     return (
       <div>
         {this.props.data.value.allSnippets.map((s: any) => (
-          <div>
-            <h1>{s.id}</h1>
-            <Snippet generatedText={s.generatedText} seedText={s.seedText} />
-          </div>
+          <Snippet
+            id={s.id}
+            title={s.id}
+            generatedText={s.generatedText}
+            seedText={s.seedText}
+          />
         ))}
       </div>
     );
@@ -22,6 +24,7 @@ class AllSnippets extends React.Component<Props, {}> {
 }
 
 export default connectGraphQL(AllSnippets, () => ({
+  // Challenge 1: Implement the query to load all snippets.
   query: `
   {
     allSnippets {

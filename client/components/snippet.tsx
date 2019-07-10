@@ -1,5 +1,6 @@
 import React from "react";
-import classNames from "classnames";
+
+import ShareButtons from "./share_buttons";
 
 import { mutate } from "thunder-react";
 
@@ -11,15 +12,28 @@ import "./snippet.css";
 // }
 
 interface Props {
+  id: number;
+  title: string;
   seedText: string;
   generatedText: string;
+  isDeleted?: boolean;
 }
 
 interface State {
-  hoverIdx?: number;
-  highlightStartIdx?: number;
-  highlightEndIdx?: number;
+  selectedText?: string;
 }
+
+const newlinesToBr = (text?: string) =>
+  text
+    ? text.split("\n").map((item, idx) => {
+        return (
+          <span key={idx} className="Snippet-text">
+            {item}
+            <br />
+          </span>
+        );
+      })
+    : "";
 
 class Snippet extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -27,128 +41,83 @@ class Snippet extends React.Component<Props, State> {
     this.state = {};
   }
 
-  handleMouseEnter = (idx: number) => () => {
-    this.setState({ hoverIdx: idx });
-  };
-
-  handleMouseLeave = () => {
-    this.setState({ hoverIdx: undefined });
-  };
-
-  handleClick = (idx: number) => () => {
-    if (!this.state.highlightStartIdx) {
-      this.setState({ highlightStartIdx: idx });
-    } else {
-      if (!this.state.highlightEndIdx) {
-        this.setState({ highlightEndIdx: idx });
-        // TODO: mutation?
-      } else {
-        this.setState({
-          highlightStartIdx: undefined,
-          highlightEndIdx: undefined
-        });
+  handleDeleteClick = () => {
+    mutate({
+      query: "{ deleteSnippet(id: $id) }",
+      variables: {
+        id: this.props.id
       }
+    });
+  };
+
+  renderDeleteButton = () => {
+    return (
+      <a href="" onClick={this.handleDeleteClick} className="u-marginMd">
+        Delete
+      </a>
+    );
+  };
+
+  handleUndeleteClick = () => {
+    mutate({
+      // Challenge 2: Implement the mutation to restore a deleted snippet.
+      query: "{ undeleteSnippet(id: $id) }",
+      variables: {
+        id: this.props.id
+      }
+    });
+  };
+
+  renderUndeleteButton = () => {
+    return (
+      <a href="" onClick={this.handleUndeleteClick} className="u-marginMd">
+        Restore
+      </a>
+    );
+  };
+
+  handleMouseMove = () => {
+    const selectedText = window.getSelection();
+    if (selectedText) {
+      this.setState({ selectedText: selectedText.toString() });
+    } else {
+      this.setState({ selectedText: undefined });
     }
   };
 
-  // handleClick = () => {
-  //   mutate({
-  //     query: '{ createSnippet(text: $text) }',
-  //     variables: { text: this.state.inputText },
-  //   });
-  // }
+  renderButtons = (shareText: string) => {
+    if (this.props.isDeleted) {
+      return (
+        <div className="u-flexAlignItemsCenter">
+          <div className="u-flex1" />
+          this.renderUndeleteButton();
+        </div>
+      );
+    }
+
+    // TODO: why aren't fragments working? :thinking:
+    return (
+      <div className="u-flexAlignItemsCenter">
+        <div className="u-flex1" />
+        {this.renderDeleteButton()}
+        <ShareButtons
+          textContent={shareText}
+          isSelection={Boolean(this.state.selectedText)}
+        />
+      </div>
+    );
+  };
 
   render() {
-    const text = this.props.generatedText || this.props.seedText;
-    const tokenElems: JSX.Element[] = [];
-    const lines = text.split("\n");
-    let highlightedText = "";
-    let idx = 0;
-    lines.forEach(line => {
-      const tokens = line.split(" ");
-      const numSeedTokens = this.props.seedText.split(" ").length;
-      let continues = false;
-      tokens.forEach(token => {
-        const { hoverIdx, highlightStartIdx, highlightEndIdx } = this.state;
-        // TODO: add a test for this.
-        const endIdx = highlightEndIdx || hoverIdx;
-        let shouldHighlight =
-          idx === hoverIdx ||
-          idx === highlightStartIdx ||
-          Boolean(
-            highlightStartIdx &&
-              endIdx &&
-              Math.min(highlightStartIdx, endIdx) <= idx &&
-              Math.max(highlightStartIdx, endIdx) >= idx
-          );
-        const highlightTrailingSpace =
-          shouldHighlight &&
-          highlightStartIdx &&
-          endIdx &&
-          idx !== Math.max(highlightStartIdx, endIdx);
-        if (shouldHighlight) {
-          highlightedText += token;
-        }
-        if (highlightTrailingSpace) {
-          highlightedText += " ";
-        }
-        const roundLeft =
-          (idx === hoverIdx && !highlightStartIdx) ||
-          (highlightStartIdx &&
-            (!endIdx || idx === Math.min(highlightStartIdx, endIdx)));
-        const roundRight =
-          (idx === hoverIdx && !highlightStartIdx) ||
-          (highlightStartIdx &&
-            (!endIdx || idx === Math.max(highlightStartIdx, endIdx)));
-        continues = shouldHighlight && !roundRight;
-        tokenElems.push(
-          <span>
-            {/* <span
-              className="Snippet-highlightedToken"
-              style={{
-                position: "relative"
-              }}
-            /> */}
-            <span
-              key={idx}
-              onMouseEnter={this.handleMouseEnter(idx)}
-              onMouseLeave={this.handleMouseLeave}
-              onClick={this.handleClick(idx)}
-              className={classNames({
-                "Snippet-highlightedToken": shouldHighlight,
-                "Snippet-token": !shouldHighlight,
-                "Snippet-borderRadiusLeft": roundLeft,
-                "Snippet-borderRadiusRight": roundRight,
-                "u-textBold": idx < numSeedTokens
-              })}
-            >
-              {token}
-              {highlightTrailingSpace ? " " : ""}
-            </span>
-            {highlightTrailingSpace ? "" : " "}
-          </span>
-        );
-        idx++;
-      });
-      if (continues) {
-        highlightedText += "\n";
-      }
-      tokenElems.push(<br />);
-    });
-    highlightedText = `"${highlightedText}" #talktothunder`;
-    const encodedText = encodeURIComponent(highlightedText);
+    const snippetText = this.props.generatedText || this.props.seedText;
+    const shareText = this.state.selectedText || snippetText;
     return (
-      <div>
-        {tokenElems}
-        <a
-          href={`https://twitter.com/intent/tweet?text=${encodedText}`}
-          className="twitter-share-button"
-          data-hashtags="talktothunder"
-          data-show-count="false"
-        >
-          Tweet
-        </a>
-        <script async src="https://platform.twitter.com/widgets.js" />
+      <div className="Snippet">
+        <h1>{this.props.title}</h1>
+        <div onMouseMove={this.handleMouseMove}>
+          {newlinesToBr(snippetText)}
+          {this.renderButtons(shareText)}
+        </div>
       </div>
     );
   }
