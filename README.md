@@ -32,7 +32,7 @@ The workshop is split into the following components:
 - Clone this project in your terminal by running `git clone https://github.com/bojdell/talk-to-thunder.git`. This will copy all the code to your computer under the directory `talk-to-thunder`. If you don't have [Git](https://git-scm.com/downloads), you will need to install it.
 - `cd talk-to-thunder`
 - Run each of the following in their own terminal:
-  - `docker pull bojdell/talktothunder:gpt2` (takes a while)
+  - `docker pull bojdell/talktothunder:gpt-2` (takes a while)
   - `./setup.sh` to install various dependencies for the project.
 - Run each of the following in its own terminal window:
   - `docker-compose -f db/docker-compose.yml up`
