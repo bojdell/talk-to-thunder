@@ -9,7 +9,7 @@ This repo contains a sample app that is a companion to an in-person workshop. Th
 - MySQL
 - [GPT-2 language model](https://openai.com/blog/better-language-models/)
 
-Content from previous workshops can be found at [#talktothunder](https://twitter.com/hashtag/talktothunder) on Twitter. The workshop slides can also be found [here](TODO). The app is based on the website https://talktotransformer.com
+Content from previous workshops can be found at [#talktothunder](https://twitter.com/hashtag/talktothunder) on Twitter. The workshop slides can also be found [here](https://docs.google.com/presentation/d/1UEk_hkmv0Jgmxhq36E0C77KOSikTbsOFwWySNpj13RY/edit?usp=sharing). The app is based on the website https://talktotransformer.com
 
 ## Overview
 
@@ -25,7 +25,7 @@ The workshop is split into the following components:
 
 ## 1) Intro / GraphQL Basics (~15 mins)
 
-Slides
+[Slides](https://docs.google.com/presentation/d/1UEk_hkmv0Jgmxhq36E0C77KOSikTbsOFwWySNpj13RY/edit?usp=sharing)
 
 ## 2) Installation / Setup (~20 mins)
 
@@ -41,6 +41,7 @@ Slides
   - `yarn start`
   - `go run go/src/talktothunder/gqlserver/main.go`
   - `docker-compose -f db/docker-compose.yml up`
+  - `docker run --rm -it -v /tmp/talktothunder:/tmp/talktothunder:rw bojdell/talktothunder:gpt-2 python3 src/incremental.py --top_k 60 --model_name 345M`
 
 #### Other Tips
 
