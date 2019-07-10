@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import AllSnippets from "./all_snippets";
 import CreateSnippet from "./create_snippet";

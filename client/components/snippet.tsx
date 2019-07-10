@@ -52,7 +52,7 @@ class Snippet extends React.Component<Props, State> {
 
   renderDeleteButton = () => {
     return (
-      <a href="" onClick={this.handleDeleteClick} className="u-marginMd">
+      <a href="/" onClick={this.handleDeleteClick} className="u-marginMd">
         Delete
       </a>
     );
@@ -70,7 +70,7 @@ class Snippet extends React.Component<Props, State> {
 
   renderUndeleteButton = () => {
     return (
-      <a href="" onClick={this.handleUndeleteClick} className="u-marginMd">
+      <a href="/" onClick={this.handleUndeleteClick} className="u-marginMd">
         Restore
       </a>
     );

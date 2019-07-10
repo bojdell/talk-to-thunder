@@ -76,6 +76,9 @@ class Menu extends React.Component<Props, State> {
         <span className="Menu-item">
           <a href={Pages[2].route}>{Pages[2].displayName}</a>
         </span>
+        <span className="Menu-item">
+          <a href="https://forms.gle/yKdVi6gv7Vt4QSLj9">Feedback</a>
+        </span>
       </div>
     );
   }
