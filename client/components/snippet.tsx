@@ -61,7 +61,7 @@ class Snippet extends React.Component<Props, State> {
   handleUndeleteClick = () => {
     mutate({
       // Challenge 2: Implement the mutation to restore a deleted snippet.
-      query: "{ undeleteSnippet(id: $id) }",
+      query: "",
       variables: {
         id: this.props.id
       }
@@ -90,7 +90,7 @@ class Snippet extends React.Component<Props, State> {
       return (
         <div className="u-flexAlignItemsCenter">
           <div className="u-flex1" />
-          this.renderUndeleteButton();
+          {this.renderUndeleteButton()}
         </div>
       );
     }

@@ -36,7 +36,10 @@ Go to GitHub's public [GraphQL API Explorer](https://developer.github.com/v4/exp
 ## 3) Installation / Setup (~20 mins)
 
 - Clone this project in your terminal by running `git clone https://github.com/bojdell/talk-to-thunder.git`. This will copy all the code to your computer under the directory `talk-to-thunder`. If you don't have [Git](https://git-scm.com/downloads), you will need to install it.
-- Run `./setup.sh` to install various dependencies for the project.
+- `cd talk-to-thunder`
+- Run each of the following in their own terminal:
+  - `docker pull bojdell/talktothunder:gpt2` (takes a while)
+  - `./setup.sh` to install various dependencies for the project.
 - Run each of the following in its own terminal window:
   - `docker-compose -f db/docker-compose.yml up`
     - Note: if you get port conflicts, make sure to shut down any other MySQL instances running on your machine.
@@ -44,7 +47,6 @@ Go to GitHub's public [GraphQL API Explorer](https://developer.github.com/v4/exp
   - `yarn start`
   - `go run go/src/talktothunder/gqlserver/main.go`
   - `docker-compose -f db/docker-compose.yml up`
-  - `docker pull` TODO
 
 #### Other Tips
 

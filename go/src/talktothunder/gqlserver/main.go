@@ -28,7 +28,7 @@ const (
 	SnippetStateInProgress              = 1
 	SnippetStateCompleted               = 2
 
-	DefaultNumTokensToGenerate = 100
+	DefaultNumTokensToGenerate = 50
 )
 
 type Server struct {
@@ -92,6 +92,12 @@ func int64OrElse(a *int64, b int64) int64 {
 
 func (s *Server) registerMutationRoot(schema *schemabuilder.Schema) {
 	object := schema.Mutation()
+
+	// Challenge 3a: add a mutation that will cause your computer to read text out loud.
+	// The text should be provided as a GraphQL argument.
+	// hint: try pasting this into your terminal: say hello world!
+	// https://www.idownloadblog.com/2016/02/24/make-mac-talk-terminal/
+
 	object.FieldFunc("createSnippet", func(ctx context.Context, args struct {
 		Text             string
 		FinalTokenLength *int64
@@ -225,8 +231,8 @@ func (s *Server) createSnippet(ctx context.Context, seedText string, numTokensTo
 
 const (
 	// TODO: fix these
-	InputFileName  = "/Users/bo/dev/gpt-2/input/input.txt"
-	OutputFileName = "/Users/bo/dev/gpt-2/output/output.txt"
+	InputFileName  = "/tmp/talktothunder/input.txt"
+	OutputFileName = "/tmp/talktothunder/output.txt"
 )
 
 func (s *Server) pollCurrentSnippetLoop(ctx context.Context) error {
@@ -310,14 +316,8 @@ func main() {
 		return
 	}()
 
-	// _, err = server.createSnippet(ctx, "The best IOT company is", DefaultNumTokensToGenerate)
-	// panicIfErr(err)
-
 	graphqlSchema := server.Schema()
 	introspection.AddIntrospectionToSchema(graphqlSchema)
-
-	s, err := server.getCurrentSnippet(ctx)
-	log.Println(s, err)
 
 	http.Handle("/graphql", graphql.Handler(graphqlSchema))
 	http.Handle("/graphiql/", http.StripPrefix("/graphiql/", graphiql.Handler()))

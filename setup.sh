@@ -145,3 +145,10 @@ echo
 echo Running yarn to install node_modules.
 run yarn
 echo
+
+mkdir -p /tmp/talktothunder
+
+# if [[ "$(docker images -q bojdell/talktothunder:gpt2 2> /dev/null)" == "" ]]; then
+#   docker pull bojdell/talktothunder:gpt2
+# fi
+

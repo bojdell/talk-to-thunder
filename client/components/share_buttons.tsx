@@ -12,6 +12,9 @@ class ShareButtons extends React.Component<Props, {}> {
     super(props);
   }
 
+  // Challenge 3b: add a button that will read a snippet out loud.
+  // (hint: use the feature you added in 3a)
+
   // TODO: serve icon locally.
   renderTwitter = (encodedText: string) => (
     <a

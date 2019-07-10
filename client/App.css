@@ -12,3 +12,7 @@
   height: 100%;
   width: 100%;
 }
+
+::selection {
+  background-color: #ffea61cf;
+}

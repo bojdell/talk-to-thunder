@@ -16,12 +16,12 @@ export const Pages: Page[] = [
     route: "/"
   },
   {
-    displayName: "GraphiQL",
-    route: "/graphiql"
-  },
-  {
     displayName: "Trash",
     route: "/trash"
+  },
+  {
+    displayName: "GraphiQL",
+    route: "/graphiql"
   }
 ];
 
@@ -62,14 +62,20 @@ class Menu extends React.Component<Props, State> {
     this.state = {};
   }
 
+  // TODO: iterated over pages.
   render() {
     return (
       <div className="Menu">
-        {Pages.map(page => (
-          <span className="Menu-item">
-            <a href={page.route}>{page.displayName}</a>
-          </span>
-        ))}
+        <span className="Menu-item">
+          <a href={Pages[0].route}>{Pages[0].displayName}</a>
+        </span>
+        <span className="Menu-item">
+          <a href={Pages[1].route}>{Pages[1].displayName}</a>
+        </span>
+        <span className="u-flex1" />
+        <span className="Menu-item">
+          <a href={Pages[2].route}>{Pages[2].displayName}</a>
+        </span>
       </div>
     );
   }

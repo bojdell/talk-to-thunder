@@ -64,6 +64,10 @@ class CreateSnippet extends React.Component<Props, State> {
           onChange={this.handleTextChange}
           onKeyDown={this.handleKeyDown}
         />
+        <div className="u-marginTopMd">
+          Disclaimer: network is trained on public internet data and may return
+          explicit results if provoked.
+        </div>
       </div>
     );
   }
