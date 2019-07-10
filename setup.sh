@@ -57,6 +57,7 @@ EOF
     brew "jq"
     brew "direnv"
     brew "git"
+    brew "golang-migrate"
     cask "docker"
 EOF
 
