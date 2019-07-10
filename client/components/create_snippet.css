@@ -1,0 +1,17 @@
+.CreateSnippet {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 60%;
+}
+
+.CreateSnippet-textInput {
+  border: none;
+  background-color: #eeeeee;
+  width: 100%;
+  outline: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 14pt;
+  line-height: 20pt;
+}
