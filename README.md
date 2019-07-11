@@ -40,7 +40,6 @@ The workshop is split into the following components:
     - Run `migrate -database 'mysql://root:@tcp(127.0.0.1:3307)/talktothunder' -path ./db/migrations up` in a new teminal window.
   - `yarn start`
   - `go run go/src/talktothunder/gqlserver/main.go`
-  - `docker-compose -f db/docker-compose.yml up`
   - `docker run --rm -it -v /tmp/talktothunder:/tmp/talktothunder:rw bojdell/talktothunder:gpt-2 python3 src/incremental.py --top_k 60 --model_name 345M`
 
 #### Other Tips
