@@ -9,7 +9,7 @@ This repo contains a sample app that is a companion to an in-person workshop. Th
 - MySQL
 - [GPT-2 language model](https://openai.com/blog/better-language-models/)
 
-Content from previous workshops can be found at [#talktothunder](https://twitter.com/hashtag/talktothunder) on Twitter. The workshop slides can also be found [here](https://docs.google.com/presentation/d/1UEk_hkmv0Jgmxhq36E0C77KOSikTbsOFwWySNpj13RY/edit?usp=sharing). The app is based on the website https://talktotransformer.com
+Content from previous workshops can be found at [#talktothunder](https://twitter.com/hashtag/talktothunder) on Twitter. The workshop slides can also be found [here](https://docs.google.com/presentation/d/1UEk_hkmv0Jgmxhq36E0C77KOSikTbsOFwWySNpj13RY/edit?usp=sharing). The app is inspired by https://talktotransformer.com
 
 ## Overview
 
