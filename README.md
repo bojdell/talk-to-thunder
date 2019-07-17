@@ -40,6 +40,7 @@ The workshop is split into the following components:
   - `docker-compose -f db/docker-compose.yml up`
     - Note: if you get port conflicts, make sure to shut down any other MySQL instances running on your machine.
   - `migrate -database 'mysql://root:@tcp(127.0.0.1:3307)/talktothunder' -path ./db/migrations up` (you can reuse this window after it runs)
+    - If you ever need to login to the database, you can run `mysql -h 127.0.0.1 --port=3307 -uroot talktothunder`
   - `yarn start`
   - `go run go/src/talktothunder/gqlserver/main.go`
   - `docker run --rm -it -v /tmp/talktothunder:/tmp/talktothunder:rw bojdell/talktothunder:gpt-2.1 python3 src/incremental.py --top_k 60 --model_name 345M`

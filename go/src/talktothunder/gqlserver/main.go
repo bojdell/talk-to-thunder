@@ -205,15 +205,19 @@ func panicIfErr(err error) {
 }
 
 func (s *Server) getCurrentSnippet(ctx context.Context) (*Snippet, error) {
-	var snippet *Snippet
-	if err := s.db.QueryRow(ctx, &snippet, sqlgen.Filter{"state": SnippetStateInProgress}, nil); err != nil {
+	var snippets []*Snippet
+	if err := s.db.Query(ctx, &snippets, sqlgen.Filter{"state": SnippetStateInProgress}, nil); err != nil {
 		if err != sql.ErrNoRows {
 			return nil, oops.Wrapf(err, "")
 		}
 		return nil, nil
 	}
 
-	return snippet, nil
+	if len(snippets) == 0 {
+		return nil, nil
+	}
+
+	return snippets[0], nil
 }
 
 func (s *Server) createSnippet(ctx context.Context, seedText string, numTokensToGenerate int64) (int64, error) {
@@ -237,7 +241,7 @@ func (s *Server) createSnippet(ctx context.Context, seedText string, numTokensTo
 }
 
 const (
-	// TODO: fix these
+	// TODO: config file?
 	InputFileName  = "/tmp/talktothunder/input.txt"
 	OutputFileName = "/tmp/talktothunder/output.txt"
 )
