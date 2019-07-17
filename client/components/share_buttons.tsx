@@ -31,7 +31,7 @@ class ShareButtons extends React.Component<Props, {}> {
   );
 
   render() {
-    const shareText = `"${this.props.textContent}" #talktothunder`;
+    const shareText = `"${this.props.textContent}" #talktothunder ⚡️`;
     const encodedText = encodeURIComponent(shareText);
     return (
       <div className="ShareButtons">

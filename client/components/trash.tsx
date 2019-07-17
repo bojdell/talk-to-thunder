@@ -15,7 +15,7 @@ class Trash extends React.Component<Props, {}> {
 
   renderEmptyTrashButton = () => {
     return (
-      <a href="/" onClick={this.handleSubmit} className="u-marginMd">
+      <a href="/trash" onClick={this.handleSubmit} className="u-marginMd">
         Empty Trash
       </a>
     );

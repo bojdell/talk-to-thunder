@@ -31,16 +31,16 @@ The workshop is split into the following components:
 
 - Clone this project in your terminal by running `git clone https://github.com/bojdell/talk-to-thunder.git`. This will copy all the code to your computer under the directory `talk-to-thunder`. If you don't have [Git](https://git-scm.com/downloads), you will need to install it.
 - `cd talk-to-thunder`
-- Run each of the following in their own terminal:
-  - `docker pull bojdell/talktothunder:gpt-2` (takes a while)
+- Run each of the following in a new terminal tab:
+  - `docker pull bojdell/talktothunder:gpt-2.1` (takes a while)
   - `./setup.sh` to install various dependencies for the project.
-- Run each of the following in its own terminal window:
+- Run each of the following in a new terminal tab:
   - `docker-compose -f db/docker-compose.yml up`
     - Note: if you get port conflicts, make sure to shut down any other MySQL instances running on your machine.
-    - Run `migrate -database 'mysql://root:@tcp(127.0.0.1:3307)/talktothunder' -path ./db/migrations up` in a new teminal window.
+  - `migrate -database 'mysql://root:@tcp(127.0.0.1:3307)/talktothunder' -path ./db/migrations up` (you can reuse this window after it runs)
   - `yarn start`
   - `go run go/src/talktothunder/gqlserver/main.go`
-  - `docker run --rm -it -v /tmp/talktothunder:/tmp/talktothunder:rw bojdell/talktothunder:gpt-2 python3 src/incremental.py --top_k 60 --model_name 345M`
+  - `docker run --rm -it -v /tmp/talktothunder:/tmp/talktothunder:rw bojdell/talktothunder:gpt-2.1 python3 src/incremental.py --top_k 60 --model_name 345M`
 
 #### Other Tips
 

@@ -102,6 +102,13 @@ func (s *Server) registerMutationRoot(schema *schemabuilder.Schema) {
 		Text             string
 		FinalTokenLength *int64
 	}) (int64, error) {
+		currentSnippet, err := s.getCurrentSnippet(ctx)
+		if err != nil {
+			return -1, oops.Wrapf(err, "")
+		}
+		if currentSnippet != nil {
+			return -1, nil
+		}
 		return s.createSnippet(ctx, args.Text, int64OrElse(args.FinalTokenLength, DefaultNumTokensToGenerate))
 	})
 	object.FieldFunc("deleteSnippet", func(ctx context.Context, args struct {
