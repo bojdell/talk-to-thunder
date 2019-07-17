@@ -11,6 +11,8 @@ This repo contains a sample app that is a companion to an in-person workshop. Th
 
 Content from previous workshops can be found at [#talktothunder](https://twitter.com/hashtag/talktothunder) on Twitter. The workshop slides can also be found [here](https://docs.google.com/presentation/d/1UEk_hkmv0Jgmxhq36E0C77KOSikTbsOFwWySNpj13RY/edit?usp=sharing). The app is inspired by https://talktotransformer.com
 
+![image](https://user-images.githubusercontent.com/3486165/61419524-74945000-a8b3-11e9-9e84-58821622576e.png)
+
 ## Overview
 
 The workshop is split into the following components:
